@@ -22,7 +22,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'content'=> 'user.create'
+        ];
+        return view('layouts.wrapper', $data);
     }
 
     /**
