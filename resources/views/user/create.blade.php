@@ -19,7 +19,7 @@
                 <label for="">Konfirmasi Password</label>
                 <input type="password" class="form-control" name="re_password" placeholder="Password">
             </div>
-            <a href="/user" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
+            <a href="/admin/user" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
             <button type="submit" class="btn btn-primary">Simpan</button>
           </form>
     </div>

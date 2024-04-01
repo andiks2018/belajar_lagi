@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
-// Route::get('/template', function () {
-//     return view('template');
-// });
+Route::get('/template', function () {
+    return view ('template');
+});
 
 Route::get('/', function () {
     $data = [
@@ -25,11 +25,24 @@ Route::get('/', function () {
 // Route::resource('user', UserController::class);
 
 // dan pakai route prefix
-Route::prefix('admin')->group(function () {
+Route::prefix('/admin')->group(function () {
 
     Route::resource('/user', UserController::class);
 });
 
-Route::get('greeting', function () {
-    return 'Hello World';
+Route::resource('/user', UserController::class);
+
+
+Route::prefix('/panel')->group(function () {
+
+    Route::get('/berita', function () {
+        return 'Hello berita';
+    });
+    Route::get('/olahraga', function () {
+        return 'Hello olaharaga';
+    });
+    Route::get('/kesehatan', function () {
+        return 'Hello kesehatan';
+    });
+
 });
