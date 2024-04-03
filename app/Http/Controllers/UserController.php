@@ -13,8 +13,8 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            'user'=>User::get(),
-            'content'=> 'user.index'
+            'user'=>User::get(), //ambil hasil inputan database ke variable user
+            'content'=> 'user.index' //masing masing content nanti beda, tampilannya
         ];
         return view('layouts.wrapper', $data);
     }
@@ -35,6 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //validasi di simpan ke data
         $data = $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
@@ -42,6 +43,7 @@ class UserController extends Controller
             're_password'=>'required|same:password',
         ]);
 
+        //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
         User::create($data);
         return redirect('/user');
     }
