@@ -9,7 +9,8 @@
 3. Membuat tabel user dan form input user
 ![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/2f54e53b-90c2-481a-a0ea-fb4557f57ce7)
 
-4. 
+4. berhasil menambahkan data
+![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/8a27bc25-b1e6-4aab-9931-b06bffb1af8d)
 
 
 
