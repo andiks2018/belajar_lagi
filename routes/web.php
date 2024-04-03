@@ -21,28 +21,4 @@ Route::get('/', function () {
 //     return view('layouts.wrapper', $data);
 // });
 
-// pakai route ini
-// Route::resource('user', UserController::class);
-
-// dan pakai route prefix
-Route::prefix('/admin')->group(function () {
-
-    Route::resource('/user', UserController::class);
-});
-
 Route::resource('/user', UserController::class);
-
-
-Route::prefix('/panel')->group(function () {
-
-    Route::get('/berita', function () {
-        return 'Hello berita';
-    });
-    Route::get('/olahraga', function () {
-        return 'Hello olaharaga';
-    });
-    Route::get('/kesehatan', function () {
-        return 'Hello kesehatan';
-    });
-
-});

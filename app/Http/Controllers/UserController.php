@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,6 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $data = [
+            'user'=>User::get(),
             'content'=> 'user.index'
         ];
         return view('layouts.wrapper', $data);
@@ -33,7 +35,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required',
+            're_password'=>'required|same:password',
+        ]);
+
+        User::create($data);
+        return redirect('/user');
     }
 
     /**
