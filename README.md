@@ -15,7 +15,4 @@
 5. edit data
 ![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/055faf8a-3be7-40df-a487-c845fda896fa)
 
-![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/989743ba-28e1-4954-8324-588e948ed2ad)
-
-7. 
-
+![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/1346c809-fc37-4839-b47b-f9c840b9e8f7)
