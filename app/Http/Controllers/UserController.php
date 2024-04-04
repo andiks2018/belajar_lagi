@@ -12,6 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        //menampilkan data disini, user index
         $data = [
             'user'=>User::get(), //ambil hasil inputan database ke variable user
             'content'=> 'user.index' //masing masing content nanti beda, tampilannya
@@ -22,6 +23,8 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    //tampilan create form
     public function create()
     {
         $data = [
@@ -33,6 +36,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    //menampilkan data ke database local
     public function store(Request $request)
     {
         //validasi di simpan ke data
@@ -42,6 +47,9 @@ class UserController extends Controller
             'password'=>'required',
             're_password'=>'required|same:password',
         ]);
+
+        //agar password tidak kelihatan aslinya
+        $data['password']= Hash::make($data['password']);
 
         //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
         User::create($data);
@@ -61,7 +69,12 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //menampilkan form create, copy dari create function
+        $data = [
+            'user'=> User::find($id),
+            'content'=> 'user.create'
+        ];
+        return view('layouts.wrapper', $data);
     }
 
     /**
@@ -69,7 +82,30 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //copy dari store untuk melakukan update data, berdasarkan idnya
+        $user =User::find($id);
+            //validasi di simpan ke data
+            $data = $request->validate([
+                'name'=>'required',
+                'email'=>'required|email|unique:users,email,' . $user->id, //tambahkan user id
+                //'password'=>'required', //ini boleh kosong
+                're_password'=>'same:password',
+            ]);
+
+        //jika request password ada maka buat hash, kalau tidak maka tampilkan password
+        if ($request->password != ''){
+            //agar password tidak kelihatan aslinya
+            $data['password']= Hash::make($request->password);
+        } else{
+            $data['password'] = $user->password;
+        }
+
+
+            //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
+            //User::create($data); //ini tidak perlu create datalagi
+        //update data berdasarkan data user
+        $user->update($data);
+            return redirect('/user');
     }
 
     /**
