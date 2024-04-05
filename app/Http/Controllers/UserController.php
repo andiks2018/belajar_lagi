@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -51,6 +52,7 @@ class UserController extends Controller
         //agar password tidak kelihatan aslinya
         $data['password']= Hash::make($data['password']);
 
+        // dd($data); //cek inputan kita sudah bisa di eksekusi apa belum
         //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
         User::create($data);
         return redirect('/user')->with('success', 'Data telah ditambahkan.');
