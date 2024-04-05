@@ -53,7 +53,7 @@ class UserController extends Controller
 
         //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
         User::create($data);
-        return redirect('/user');
+        return redirect('/user')->with('success', 'Data telah ditambahkan.');
     }
 
     /**
@@ -100,12 +100,11 @@ class UserController extends Controller
             $data['password'] = $user->password;
         }
 
-
             //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
             //User::create($data); //ini tidak perlu create datalagi
         //update data berdasarkan data user
         $user->update($data);
-            return redirect('/user');
+            return redirect('/user')->with('success', 'Data telah diedit.');
     }
 
     /**
@@ -113,6 +112,12 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // delete data
+        // buat variable user yang bertugas mencari id, menggunakan model User.
+        $user = User::find($id);
+        //kemudian variable user di delete
+        $user -> delete();
+        // dan seteleh mendelete maka akan menampilkan halaman user dengan notif with
+        return redirect ('/user')->with('success', 'Data telah dihapus.');
     }
 }
