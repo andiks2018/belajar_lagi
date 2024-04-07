@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class UserController extends Controller
 {
@@ -55,6 +57,7 @@ class UserController extends Controller
         // dd($data); //cek inputan kita sudah bisa di eksekusi apa belum
         //kalau berhasil melewati validasi, selanjutnya create data simpan ke page /user : index
         User::create($data);
+        Alert::success('Success', 'Data telah ditambahkan.'); //sweetalert
         return redirect('/user')->with('success', 'Data telah ditambahkan.');
     }
 
@@ -106,6 +109,7 @@ class UserController extends Controller
             //User::create($data); //ini tidak perlu create datalagi
         //update data berdasarkan data user
         $user->update($data);
+        Alert::success('Success', 'Data telah diedit.'); //sweetalert
             return redirect('/user')->with('success', 'Data telah diedit.');
     }
 
@@ -119,6 +123,7 @@ class UserController extends Controller
         $user = User::find($id);
         //kemudian variable user di delete
         $user -> delete();
+        Alert::success('Success', 'Data telah dihapus.'); //sweetalert
         // dan seteleh mendelete maka akan menampilkan halaman user dengan notif with
         return redirect ('/user')->with('success', 'Data telah dihapus.');
     }

@@ -27,5 +27,5 @@ Route::get('/dashboard', function () {
 });
 
 // Ini route untuk admin
-Route::resource('/user', UserController::class)->middleware('auth');
+Route::resource('/user', UserController::class);
 

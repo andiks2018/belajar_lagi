@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class AuthController extends Controller
 {
@@ -21,8 +23,10 @@ class AuthController extends Controller
         //ketika datanya ada maka akan sesion dandialihkan ke halaman dashboard
         if(Auth::attempt($data)){
             $request->session()->regenerate();
+            Alert::success('Success', 'Selamat datang admin.'); //sweetalert
             return redirect('/dashboard');
         }
+
         //jika tidak ada akan kehalaman itu kembali
         return back()->with('loginError', 'Email atau password salah');
     }
