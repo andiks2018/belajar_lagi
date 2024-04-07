@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest'); //cek provider
 Route::post('/login/do', [AuthController::class, 'doLogin']);
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth'); //cek middleware
 
 Route::get('/template', function () {
     return view ('template');
