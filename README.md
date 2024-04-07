@@ -23,3 +23,7 @@
 6. delete data dan alert
 
 ![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/2fe8a755-d62c-4193-9ebd-3a637b4bf102)
+
+7. sweet alert
+
+![image](https://github.com/andiks2018/belajar_lagi/assets/78794419/c662b312-5098-4472-92e9-08772d9a27ac)
