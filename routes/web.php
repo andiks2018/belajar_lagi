@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/login', [AuthController::class, 'index']);
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login/do', [AuthController::class, 'doLogin']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::get('/template', function () {
     return view ('template');
@@ -18,4 +19,13 @@ Route::get('/', function () {
     return view('layouts.wrapper', $data);
 });
 
-Route::resource('/user', UserController::class);
+Route::get('/dashboard', function () {
+    $data = [
+        'content'=> 'dashboard.index'
+    ];
+    return view('layouts.wrapper', $data);
+});
+
+// Ini route untuk admin
+Route::resource('/user', UserController::class)->middleware('auth');
+

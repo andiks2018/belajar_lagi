@@ -26,6 +26,7 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
+                {{-- menampilkan pesan error dari login --}}
                 @if (session()->has('loginError'))
                     <div class="alert alert-danger">{{ session('loginError') }}</div>
                 @endif
