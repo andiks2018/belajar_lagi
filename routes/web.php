@@ -17,7 +17,7 @@ Route::get('/', function () {
         'content'=> 'dashboard.index'
     ];
     return view('layouts.wrapper', $data);
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     $data = [
